@@ -1,5 +1,7 @@
 package reivajh06.livingBeings;
 
+import reivajh06.Position;
+
 import java.util.List;
 
 public abstract class LivingBeing {
@@ -11,6 +13,16 @@ public abstract class LivingBeing {
 	protected Reproduction reproduction;
 	protected float hunger;
 	protected float thirst;
+	protected Position position;
+
+	public Position position() {
+		return position;
+	}
+
+	public LivingBeing position(Position position) {
+		this.position = position;
+		return this;
+	}
 
 	public String name() {
 		return name;
@@ -76,6 +88,10 @@ public abstract class LivingBeing {
 	}
 
 	public String eat() {
+		if(hunger <= 30) {
+			hunger += 40;
+		}
 
+		return "%s has eaten".formatted(name);
 	}
 }
